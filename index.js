@@ -2,8 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
+app.use(express.static("public"));
 //Step 3 - Make the styling show up.
 //Hint 1: CSS files are static files!
 //Hint 2: The header and footer are partials.
@@ -19,6 +20,13 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
+	let bandName =
+		adj[Math.floor(Math.random() * adj.length)] +
+		" " +
+		noun[Math.floor(Math.random() * noun.length)];
+	res.render("index.ejs", {
+		yourBandName: bandName,
+	});
 	//Step 2 - Make the generate name functionality work
 	//Hint: When the "Generate Name" button in index.ejs is clicked, it should hit up this route.
 	//Then:
