@@ -1,8 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = process.env.port || 4000;
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 //Step 3 - Make the styling show up.
