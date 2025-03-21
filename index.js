@@ -36,6 +36,15 @@ app.post("/submit", (req, res) => {
 	//3. Test to make sure that the random words display in the h1 element in index.ejs
 });
 
+app.get("/debug-ejs", (req, res) => {
+	try {
+		require.resolve("ejs");
+		res.send("EJS is installed");
+	} catch (err) {
+		res.send("EJS is missing");
+	}
+});
+
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
